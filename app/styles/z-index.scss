@@ -1,33 +1,41 @@
+// Define max z-index for ease of maintenance
 $zIndexMax: 999;
 
+// Layer for the logo element
 .z-logo {
-  z-index: $zIndexMax - 1;
+  z-index: $zIndexMax - 1;  // Above the sidebar
 }
 
+// Sidebar layer
 .z-sidebar {
-  z-index: $zIndexMax - 2;
+  z-index: $zIndexMax - 2;  // Below the logo
 }
 
+// Dropdowns
 .z-port-dropdown {
-  z-index: $zIndexMax - 3;
+  z-index: $zIndexMax - 3;  // Below the sidebar
 }
 
+// Iframe overlay
 .z-iframe-overlay {
-  z-index: $zIndexMax - 4;
+  z-index: $zIndexMax - 4;  // Just below the dropdowns
 }
 
+// Prompt and workbench layers
 .z-prompt {
-  z-index: 2;
+  z-index: 2; // Custom layer for the prompt
 }
 
 .z-workbench {
-  z-index: 3;
+  z-index: 3; // Workbench sits above prompt
 }
 
+// File tree breadcrumb
 .z-file-tree-breadcrumb {
-  z-index: $zIndexMax - 1;
+  z-index: $zIndexMax - 1;  // Same as logo for consistent stacking
 }
 
+// Max z-index utility class
 .z-max {
-  z-index: $zIndexMax;
+  z-index: $zIndexMax;  // Topmost element
 }
