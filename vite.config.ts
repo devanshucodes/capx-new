@@ -10,9 +10,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig((config) => {
   return {
-    base: '/capx-new/', // Ensure this matches your GitHub Pages repo name
+    base: '/', // No base path needed for Netlify
     build: {
-      outDir: 'dist', // Explicitly set the output directory for GitHub Pages
+      outDir: 'dist', // Netlify will use this folder
       target: 'esnext',
       rollupOptions: {
         output: {
@@ -78,4 +78,5 @@ function chrome129IssuePlugin() {
     },
   };
 }
+
 

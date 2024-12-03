@@ -33,3 +33,6 @@ _worker.bundle
 
 Modelfile
 modelfiles
+
+# Local Netlify folder
+.netlify
