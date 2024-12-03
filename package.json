@@ -9,20 +9,20 @@
   "scripts": {
     "predeploy": "vite build",
     "deploy": "vite build && gh-pages --d dist",
-    "build": "vite build",  
-    "dev": "vite", 
+    "build": "vite build",
+    "dev": "vite",
     "test": "vitest --run",
     "test:watch": "vitest",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint app",
     "lint:fix": "npm run lint -- --fix && prettier app --write",
-    "start": "vite preview", 
+    "start": "vite preview",
     "dockerstart": "bindings=$(./bindings.sh) && wrangler pages dev ./build/client $bindings",
     "dockerrun": "docker run -it -d --name bolt-ai-live -p 5173:5173 --env-file .env.local bolt-ai",
     "dockerbuild:prod": "docker build -t bolt-ai:production -t bolt-ai:latest --target bolt-ai-production .",
     "dockerbuild": "docker build -t bolt-ai:development -t bolt-ai:latest --target bolt-ai-development .",
     "typecheck": "tsc",
     "typegen": "wrangler types",
-    "preview": "vite preview" 
+    "preview": "vite preview"
   },
   "engines": {
     "node": ">=18.18.0"
@@ -111,7 +111,7 @@
     "typescript": "^5.5.2",
     "unified": "^11.0.5",
     "unocss": "^0.61.3",
-    "vite": "^5.3.1",
+    "vite": "^6.0.2",
     "vite-plugin-gh-pages": "^1.0.0",
     "vite-plugin-node-polyfills": "^0.22.0",
     "vite-plugin-optimize-css-modules": "^1.1.0",
@@ -125,4 +125,3 @@
   },
   "packageManager": "pnpm@9.4.0"
 }
-

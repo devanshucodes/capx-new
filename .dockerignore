@@ -15,12 +15,11 @@ README.md
 *.local
 *.example
 
-# Ignore node modules, logs and cache files
+# Ignore node modules, logs, and cache files
 **/*.log
 **/node_modules
-**/dist
-**/build
 **/.cache
 logs
 dist-ssr
 .DS_Store
+
