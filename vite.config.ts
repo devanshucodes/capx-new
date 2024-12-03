@@ -1,4 +1,7 @@
-import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
+import {
+  cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+  vitePlugin as remixVitePlugin,
+} from '@remix-run/dev';
 import UnoCSS from 'unocss/vite';
 import { defineConfig, type ViteDevServer } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
@@ -7,9 +10,15 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig((config) => {
   return {
-    base: '/capx-new/',
+    base: '/capx-new/', // Ensure this matches your GitHub Pages repo name
     build: {
+      outDir: 'dist', // Explicitly set the output directory for GitHub Pages
       target: 'esnext',
+      rollupOptions: {
+        output: {
+          manualChunks: undefined, // Optional: Let Rollup handle chunking automatically
+        },
+      },
     },
     plugins: [
       nodePolyfills({
@@ -28,7 +37,12 @@ export default defineConfig((config) => {
       chrome129IssuePlugin(),
       config.mode === 'production' && optimizeCssModules({ apply: 'build' }),
     ],
-    envPrefix:["VITE_","OPENAI_LIKE_API_","OLLAMA_API_BASE_URL","LMSTUDIO_API_BASE_URL"],
+    envPrefix: [
+      'VITE_',
+      'OPENAI_LIKE_API_',
+      'OLLAMA_API_BASE_URL',
+      'LMSTUDIO_API_BASE_URL',
+    ],
     css: {
       preprocessorOptions: {
         scss: {
@@ -64,3 +78,4 @@ function chrome129IssuePlugin() {
     },
   };
 }
+

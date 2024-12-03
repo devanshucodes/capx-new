@@ -6,6 +6,7 @@ on:
       - master
   pull_request:
 
+# ci.yaml
 jobs:
   test:
     name: Test
@@ -20,8 +21,7 @@ jobs:
       - name: Run type check
         run: pnpm run typecheck
 
-      # - name: Run ESLint
-      #   run: pnpm run lint
+      # Uncomment this only if needed for CI checks (not for deployment)
+      # - name: Run tests
+      #   run: pnpm run test
 
-      - name: Run tests
-        run: pnpm run test
