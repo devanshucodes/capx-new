@@ -14,9 +14,31 @@ export default defineConfig((config) => {
     build: {
       outDir: 'dist', // Netlify will use this folder
       target: 'esnext',
+      chunkSizeWarningLimit: 100000000, // Increase chunk size warning limit to 1000 KB
       rollupOptions: {
         output: {
-          manualChunks: undefined, // Optional: Let Rollup handle chunking automatically
+          // Split larger dependencies into smaller chunks
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              // Split large node_modules packages
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'react'; // Separate React into its own chunk
+              }
+              if (id.includes('lodash')) {
+                return 'lodash'; // Separate lodash into its own chunk
+              }
+              if (id.includes('axios')) {
+                return 'axios'; // Separate axios into its own chunk
+              }
+              if (id.includes('chart.js')) {
+                return 'chartjs'; // Separate chart.js into its own chunk
+              }
+              if (id.includes('vue')) {
+                return 'vue'; // Separate Vue into its own chunk (if using Vue)
+              }
+              return 'vendor'; // Other third-party libraries
+            }
+          },
         },
       },
     },
@@ -78,5 +100,8 @@ function chrome129IssuePlugin() {
     },
   };
 }
+
+
+
 
 
