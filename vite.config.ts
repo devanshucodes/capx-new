@@ -10,17 +10,17 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig((config) => {
   return {
-    base: '/', // No base path needed for Netlify
+    // Update 'base' with your GitHub repo name
+    base: '/capx-new/', // Required for GitHub Pages, replace 'capx-new' with your repo name
     build: {
-      outDir: 'dist', // Netlify will use this folder
+      outDir: 'build', // Set output folder to 'build' instead of 'dist'
       target: 'esnext',
-      chunkSizeWarningLimit: 100000000, // Increase chunk size warning limit to 1000 KB
+      chunkSizeWarningLimit: 10000, // Increase chunk size warning limit to 10 MB
       rollupOptions: {
         output: {
           // Split larger dependencies into smaller chunks
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              // Split large node_modules packages
               if (id.includes('react') || id.includes('react-dom')) {
                 return 'react'; // Separate React into its own chunk
               }
@@ -44,7 +44,7 @@ export default defineConfig((config) => {
     },
     plugins: [
       nodePolyfills({
-        include: ['path', 'buffer'],
+        include: ['path', 'buffer'], // Include polyfills for 'path' and 'buffer'
       }),
       config.mode !== 'test' && remixCloudflareDevProxy(),
       remixVitePlugin({
@@ -100,6 +100,7 @@ function chrome129IssuePlugin() {
     },
   };
 }
+
 
 
 
